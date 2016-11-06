@@ -26,10 +26,10 @@ public class TreeDataProvider extends BaseObservable{
     synchronized public void query(String query) {
 
         System.out.println(String.format("Background query %s", query));
+        this.root.getFolder().removeAll();
         for (Crawler crawler : crawlerList) {
             this.root.getFolder().mergeNodeList(crawler.crawl(query));
         }
-
         this.root = processor.process(root);
         for (Observer observer : this.observers) {
             observer.notify(root);

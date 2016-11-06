@@ -74,7 +74,7 @@ public class Application {
             view = (DataView) method.invoke(object);
         }
         if (currentView != null) {
-//            currentView.hide();
+            currentView.hide();
         }
         currentView = view;
         currentView.show();
@@ -93,7 +93,7 @@ public class Application {
             }
         };
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        executor.scheduleWithFixedDelay(runnable, 1, 2, TimeUnit.SECONDS);
+        executor.scheduleWithFixedDelay(runnable, 1, 10, TimeUnit.SECONDS);
     }
 
     private Application() {
